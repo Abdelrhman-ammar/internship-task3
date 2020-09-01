@@ -4,6 +4,11 @@
     require_once "./database/connection.php";
     require_once "./database/queryBuilder.php";
 
+    //=========================database info ===========================================
+    $dbname = "wbVJlxxBOf";
+    $port = "3306";
+    $host = "remotemysql.com"; 
+    //=========================database info ===========================================
     if($_SERVER['REQUEST_METHOD']=='POST'){
 
         if(isset($_POST["db-info"])){
@@ -22,7 +27,7 @@
 
         }elseif(isset($_POST["import-data"])){
 
-            $pdo = connection::connectAndCreate("task3",$_SESSION["database"]["username"],$_SESSION["database"]["password"]);
+            $pdo = connection::connectAndCreate($dbname,$_SESSION["database"]["username"],$_SESSION["database"]["password"],$host,$port);
             $dbobj = new queryBuilder($pdo);
 
             $rowData = [];
@@ -46,14 +51,14 @@
             header("Location: ./index.php");
 
         }elseif(isset($_POST["show-data"])){
-            $pdo = connection::connectAndCreate("task3",$_SESSION["database"]["username"],$_SESSION["database"]["password"]);
+            $pdo = connection::connectAndCreate($dbname,$_SESSION["database"]["username"],$_SESSION["database"]["password"],$host,$port);
             $dbobj = new queryBuilder($pdo);
             $data = $dbobj->makeQuery("SELECT * FROM csv");
             require_once "./index.php";
         }elseif(isset($_POST["remove-data"])){
-            $pdo = connection::connect($_SESSION["database"]["username"],$_SESSION["database"]["password"]);
+            $pdo = connection::connect($_SESSION["database"]["username"],$_SESSION["database"]["password"],$host,$port);
             $dbobj = new queryBuilder($pdo);
-            $dbobj->makeQuery("DROP DATABASE IF EXISTS task3");
+            $dbobj->makeQuery("DROP DATABASE IF EXISTS {$dbname}");
             session_unset();
             session_destroy();
             header("Location: ./index.php");

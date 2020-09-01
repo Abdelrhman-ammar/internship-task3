@@ -10,3 +10,13 @@ CREATE TABLE csv(
     accepted INT(6) NOT NULL,
     refused INT(6) NOT NULL 
 );
+
+Username: wbVJlxxBOf
+
+Database name: wbVJlxxBOf
+
+Password: cesrgBAlC8
+
+Server: remotemysql.com
+
+Port: 3306

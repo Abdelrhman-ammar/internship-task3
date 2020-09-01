@@ -1,9 +1,9 @@
 <?php
 
     class connection {
-        public static function connectAndCreate($DBname, $username = 'root',$pass = '', $host = '127.0.0.1', $DBMS = 'mysql'){
+        public static function connectAndCreate($DBname, $username = 'root',$pass = '', $host = '127.0.0.1', $port = '3306' , $DBMS = 'mysql'){
             try {
-                $pdo = new PDO("$DBMS:host=$host",$username,$pass);
+                $pdo = new PDO("$DBMS:host=$host" . ";port=$port",$username,$pass);
                 $dbobj = new queryBuilder($pdo);
                 $DBexist = $dbobj->makequery("SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '$DBname'");
                 if(empty($DBexist)){
@@ -28,9 +28,9 @@
                 die($e->getMessage());
             }
         }
-        public static function connect($username = 'root',$pass = '', $host = '127.0.0.1', $DBMS = 'mysql'){
+        public static function connect($username = 'root',$pass = '', $host = '127.0.0.1', $port = '3306',$DBMS = 'mysql'){
             try {
-                    return new PDO("$DBMS:host=$host",$username,$pass);
+                    return new PDO("$DBMS:host=$host" . ";port=$port",$username,$pass);
             }catch (PDOException $e){
                 die($e->getMessage());
             }
