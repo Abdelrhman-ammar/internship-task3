@@ -5,9 +5,9 @@
     require_once "./database/queryBuilder.php";
 
     //=========================database info ===========================================
-    $dbname = "wbVJlxxBOf";
+    $dbname = "task3";
     $port = "3306";
-    $host = "remotemysql.com"; 
+    $host = "127.0.0.1"; 
     //=========================database info ===========================================
     if($_SERVER['REQUEST_METHOD']=='POST'){
 

@@ -11,6 +11,8 @@ CREATE TABLE csv(
     refused INT(6) NOT NULL 
 );
 
+
+
 Username: wbVJlxxBOf
 
 Database name: wbVJlxxBOf
