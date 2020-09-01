@@ -1,0 +1,98 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+nav{
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.main-div{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn{
+    padding: 5px 10px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 17px;
+    width: 200PX;
+    margin: 5px;
+}
+
+form{
+    display: inline-block;
+}
+
+
+.connection-form{
+    width: 400px;
+    margin: 70px auto;
+    border: 1px solid black;
+    padding: 50px 0px;
+    border-radius: 5px;
+    display: none;
+}
+
+
+.connection-form input{
+    display: block;
+    width: 300px;
+    margin: auto;
+    margin-bottom: 20px;
+    height: 30px;
+    font-size: 16px;
+    padding: 0px 5px;
+}
+
+.connection-form .btn-submit{
+    display: block;
+    width: 300px;
+    margin: auto;
+    height: 30px;
+    cursor: pointer;
+}
+
+/*================================================ table ===================================*/
+table{
+    width: 100%;
+}
+
+thead{
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+}
+
+thead th{
+    width: 12.5%;
+    border-right: 1px solid white;
+    width: 200px;
+    height: 40px;
+}
+
+table tbody tr td{
+    height: 30px;
+    padding-left: 10px;
+}
+
+table tbody tr:nth-child(even){
+    background-color: #f2f2f2;
+    border: 1px solid gray;
+}
+
+
+.alert{
+    text-align: center;
+    color: red;
+}
