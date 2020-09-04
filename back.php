@@ -3,16 +3,12 @@
     session_start();
     require_once "./database/connection.php";
     require_once "./database/queryBuilder.php";
-
-    //=========================database info ===========================================
-    $dbname = "task3";
-    $port = "3306";
-    $host = "127.0.0.1"; 
-    //=========================database info ===========================================
+    
     if($_SERVER['REQUEST_METHOD']=='POST'){
 
         if(isset($_POST["db-info"])){
-
+            $config = require_once "./config.php";
+            $_SESSION["database"] = $config["database"];
             $_SESSION["database"]["username"] = $_POST["user-name"];
             $_SESSION["database"]["password"] = $_POST["password"];
             $_SESSION["alert"] = "UserName And Password Are Resevied";
@@ -26,10 +22,8 @@
             header("Location: ./index.php");
 
         }elseif(isset($_POST["import-data"])){
-
-            $pdo = connection::connectAndCreate($dbname,$_SESSION["database"]["username"],$_SESSION["database"]["password"],$host,$port);
+            $pdo = connection::connectConfig($_SESSION["database"]);
             $dbobj = new queryBuilder($pdo);
-
             $rowData = [];
             $size = sizeof($_SESSION["csvAsArray"]);
             for($row = 1; $row < $size; $row++){
@@ -51,16 +45,17 @@
             header("Location: ./index.php");
 
         }elseif(isset($_POST["show-data"])){
-            $pdo = connection::connectAndCreate($dbname,$_SESSION["database"]["username"],$_SESSION["database"]["password"],$host,$port);
+            $pdo = connection::connectConfig($_SESSION["database"]);
             $dbobj = new queryBuilder($pdo);
             $data = $dbobj->makeQuery("SELECT * FROM csv");
-            require_once "./index.php";
+            require "./index.php";
         }elseif(isset($_POST["remove-data"])){
-            $pdo = connection::connect($_SESSION["database"]["username"],$_SESSION["database"]["password"],$host,$port);
+            $pdo = connection::connect($_SESSION["database"]["username"],$_SESSION["database"]["password"],$_SESSION["database"]["host"]);
             $dbobj = new queryBuilder($pdo);
-            $dbobj->makeQuery("DROP DATABASE IF EXISTS {$dbname}");
+            $dbobj->makeQuery("DROP DATABASE IF EXISTS {$_SESSION["database"]["DBName"]}");
             session_unset();
             session_destroy();
             header("Location: ./index.php");
         }
+        
     }

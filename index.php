@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <title>CSV Handel</title>
-        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="./resources/style.css">
     </head>
     <body>
         <nav>
@@ -37,7 +37,7 @@
             
             <form id="connectionForm" method="post" action="back.php" class="connection-form">
                 <input name="user-name" type="text" placeholder="Enter Database UserName" required>
-                <input name="password" type="password" placeholder="Enter Database Password" required>
+                <input name="password" type="password" placeholder="Enter Database Password">
                 <button name="db-info" class="btn-submit" type="submit">Connect</button>
             </form>
         </div>
@@ -71,6 +71,6 @@
                     </tbody>
             </table>
         <?php endif ?>
-        <script src="./index.js"></script>
+        <script src="./resources/index.js"></script>
     </body>
 </html>
