@@ -2,8 +2,8 @@
 
 how to setup project localy
 
-*clone 
-*put project in local host directory EX(xampp)
-*open index.php file from prowser
+* clone the project 
+* put project in local host directory EX(xampp)
+* open index.php file from prowser
 
 ## dont forget change database connection info from config.php file
